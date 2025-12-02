@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可愛柴犬風格計算機</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ------------------------------------------- */
+        /* 🐶 基本設定 (背景、字體) 🐶 */
+        /* ------------------------------------------- */
+        
+        body {
+            /* 柔和的米白/奶油色作為底色 (柴犬的裏白) */
+            background-color: #FFF9E0; 
+            /* 使用圓潤的字體，增加可愛感 */
+            font-family: 'M PLUS Rounded 1c', sans-serif; 
+            color: #4E342E; /* 深咖啡色作為主要文字色 */
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* 標題 - 柴犬的主色，圓潤且活潑 */
+        h1 {
+            background-color: #E59451; /* 暖橘棕色 (赤柴色) */
+            color: #FFFFFF;
+            padding: 15px 35px;
+            border-radius: 50px; /* 超大圓角，像柴犬的頭 */
+            box-shadow: 0 6px 0 #D37D3E; /* 略深的陰影 */
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            font-size: 2.5em;
+            border: 3px solid #D37D3E;
+            font-weight: 900;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        h1:hover {
+            transform: scale(1.05) rotate(1deg); /* 懸停時像柴犬搖頭一樣輕微晃動 */
+        }
+
+        /* ------------------------------------------- */
+        /* 🦴 輸入區域 (Input Group) 🦴 */
+        /* ------------------------------------------- */
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            /* 背景使用淺奶油色，邊框使用柴犬棕色 */
+            background-color: #FFFAE9; 
+            padding: 20px;
+            border-radius: 20px; /* 圓角更圓 */
+            border: 2px dashed #9E6B5A; /* 虛線邊框，增加手繪感 */
+            width: 350px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .input-group:hover {
+             box-shadow: 0 6px 12px rgba(229, 148, 81, 0.5); /* 懸停時有柴犬色光暈 */
+        }
+
+        /* 標籤 - 增加可愛的顏色和樣式 */
+        label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #A1887F; /* 柔和的咖啡色 */
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 0 #FFFFFF;
+        }
+
+        /* 輸入框 - 圓潤且簡潔 */
+        input[type="number"] {
+            padding: 12px 18px;
+            border: 3px solid #FFCC80; /* 淺橘黃色邊框 */
+            border-radius: 10px;
+            font-size: 1.4em;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: right;
+            color: #4E342E;
+            background-color: #FFFFFF;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* Focus 時像柴犬臉頰上的腮紅 */
+        input[type="number"]:focus {
+            border-color: #FFAB91; /* 柔和的粉橘色 */
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 171, 145, 0.6); 
+        }
+
+        /* ------------------------------------------- */
+        /* 🐾 按鈕 (Button) - 柴犬肉球 🐾 */
+        /* ------------------------------------------- */
+
+        button {
+            /* 模仿柴犬的粉色肉球 */
+            background-color: #FFC0CB; /* 淺粉色 */
+            color: #4E342E;
+            font-size: 1.6em;
+            font-weight: 900;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 40px; /* 圓潤造型 */
+            cursor: pointer;
+            box-shadow: 0 6px 0 #E0B0B0; /* 深一點的粉色陰影 */
+            margin-top: 25px;
+            transition: all 0.1s;
+            letter-spacing: 2px;
+            border: 3px solid #E0B0B0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 華麗特效: 懸停時有骨頭圖案出現（使用偽元素） */
+        button::before {
+            content: '🦴'; /* 骨頭圖案 */
+            position: absolute;
+            font-size: 2em;
+            opacity: 0;
+            transform: rotate(0deg);
+            transition: all 0.5s ease-out;
+            top: 5px;
+            left: -30px;
+        }
+
+        button:hover {
+            background-color: #FFDDE2;
+            transform: rotate(-1deg);
+        }
+        
+        /* 懸停時，骨頭圖案出現並旋轉 */
+        button:hover::before {
+            opacity: 1;
+            transform: rotate(360deg);
+            left: 5px;
+        }
+
+        /* 按鈕按下效果 - 模擬肉球被按壓 */
+        button:active {
+            box-shadow: 0 2px 0 #E0B0B0;
+            transform: translateY(4px);
+        }
+
+        /* ------------------------------------------- */
+        /* ✨ 結果顯示區 (Result) - 幸福微笑 ✨ */
+        /* ------------------------------------------- */
+
+        #result-container {
+            margin-top: 35px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #8D6E63; /* 柔和的棕色文字 */
+            /* 背景使用淺柴犬橘 */
+            background-color: #FFECB3; 
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: 3px solid #FFAB40; /* 活潑的橘色邊框 */
+            box-shadow: 0 4px 10px rgba(229, 148, 81, 0.3);
+            position: relative;
+        }
+
+        /* 結果數字 (span#ans) - 特別突出，像柴犬的開心表情 */
+        #ans {
+            font-size: 2em; 
+            font-weight: 900;
+            color: #FF9800; /* 亮橘色 */
+            padding: 0 10px;
+            /* 華麗特效: 輕微的搖擺效果 (開心) */
+            animation: bounce 1s infinite alternate; 
+        }
+        
+        /* 華麗特效: 讓結果數字像在開心跳躍 */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px) scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🐶 柴柴的計算遊戲 🐾</h1>
+    
+    <div class="input-group">
+        <label for="a">柴柴分數 A</label>
+        <input id="a" type="number" value="0" />
+    </div> 
+    
+    <div class="input-group">
+        <label for="b">柴柴分數 B</label>
+        <input id="b" type="number" value="0" />
+    </div> 
+    
+    <button onclick="calculate()">來計算可愛度！</button>
+    
+    <p id="result-container">
+        結果總和 = <span id="ans">0</span>
+    </p>
+
+    <script>
+        function calculate() {
+            const inputA = document.getElementById("a");
+            const inputb = document.getElementById("b");
+            const ansDom = document.getElementById("ans");
+            // 確保輸入值為數字，並執行加法
+            ansDom.innerText = +(inputA.value) + +(inputb.value);
+        }
+    </script>
+</body>
+</html>
